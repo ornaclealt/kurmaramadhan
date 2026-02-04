@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Spesial Ramadhan - Al Amir Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts: Playfair Display untuk kesan mewah/Ramadhan, Plus Jakarta Sans untuk modernitas -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .serif-font { font-family: 'Playfair Display', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #047857; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #065f46; }
+
+        /* PRINT SETTINGS (A4 Optimization) */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+            body {
+                background-color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            /* Hindari pemotongan elemen di tengah halaman */
+            .card-item, .section-header {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            /* Sembunyikan elemen marketing saat print */
+            .no-print, header, footer, .sticky-cta {
+                display: none !important;
+            }
+            /* Paksa layout grid agar muat banyak di kertas */
+            .grid-cols-2 {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            }
+            .gap-6 {
+                gap: 1rem !important;
+            }
+            .p-6, .p-8 {
+                padding: 1rem !important;
+            }
+            .shadow-md, .shadow-xl {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            /* Hero Image di print jadi header simple */
+            .hero-section {
+                height: auto !important;
+                min-height: 0 !important;
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+                margin-bottom: 2rem !important;
+            }
+            .hero-overlay { display: none !important; }
+            .hero-content {
+                position: static !important;
+                text-align: center !important;
+                color: black !important;
+            }
+            .hero-title { font-size: 24px !important; color: #064E3B !important; }
+            .hero-subtitle { color: #333 !important; }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            800: '#065F46',
+                            900: '#064E3B',
+                            950: '#022C22',
+                        },
+                        gold: {
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-emerald-200 selection:text-emerald-900 pb-24">
+
+    <!-- Navbar (Sticky) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Logo Placeholder / Icon -->
+                <div class="w-10 h-10 bg-emerald-900 rounded-full flex items-center justify-center text-gold-400 font-serif font-bold text-xl">
+                    A
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight text-emerald-950 leading-tight">Al Amir Group</h1>
+                    <p class="text-[10px] text-emerald-600 font-medium tracking-wide uppercase">Premium Dates Importer</p>
+                </div>
+            </div>
+            <a href="https://wa.me/6282210892189" class="no-print hidden sm:flex items-center gap-2 text-xs font-semibold bg-emerald-50 text-emerald-800 py-2 px-4 rounded-full border border-emerald-200 hover:bg-emerald-100 transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.672-.272-.989-.471-1.135-.644-1.135l-.797.006c-.272.006-.719.102-1.091.509-.374.408-1.436 1.401-1.436 3.416 0 2.015 1.465 3.96 1.67 4.234.204.274 2.88 4.398 6.98 6.126 2.76 1.164 3.322.929 3.917.871.595-.058 1.905-.779 2.173-1.531.268-.753.268-1.398.192-1.527z"/></svg>
+                Hubungi Kami
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section (Ramadhan Theme) -->
+    <section class="hero-section relative w-full h-[500px] bg-emerald-900 overflow-hidden print-break-avoid">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img src="https://uploads.onecompiler.io/44ckngwjx/44cm4d557/ce2839f32358b30864f698a51b88d5a3.jpg" class="w-full h-full object-cover opacity-60" alt="Suasana Ramadhan">
+            <div class="hero-overlay absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-900/60 to-transparent"></div>
+        </div>
+
+        <!-- Decorative Pattern (Optional SVG) -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+        <!-- Content -->
+        <div class="hero-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center text-center sm:text-left">
+            <div class="sm:max-w-2xl">
+                <span class="inline-block py-1 px-3 rounded-full bg-gold-500/20 border border-gold-500 text-gold-400 text-sm font-semibold mb-4 backdrop-blur-sm">
+                    Ramadhan 2026
+                </span>
+                <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                    Sambut Keberkahan dengan <span class="text-gold-500 italic">Manisnya Kurma</span> Terbaik
+                </h1>
+                <p class="hero-subtitle text-gray-200 text-lg mb-8 leading-relaxed max-w-lg">
+                    Hadirkan energi terbaik saat sahur dan berbuka. Pilihan kurma premium impor langsung dari perkebunan terbaik, siap menemani ibadah anda.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 no-print">
+                    <a href="#katalog" class="inline-flex justify-center items-center px-8 py-3.5 border border-transparent text-base font-medium rounded-full text-emerald-950 bg-gold-500 hover:bg-gold-400 shadow-lg hover:shadow-gold-500/30 transition-all duration-300">
+                        Lihat Katalog
+                    </a>
+                    <a href="https://wa.me/6281292443776" class="inline-flex justify-center items-center px-8 py-3.5 border border-white text-base font-medium rounded-full text-white hover:bg-white/10 transition-all duration-300">
+                        Pesan via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="katalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+        <!-- SECTION A: KURMA SUKARI -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                    🌴
+                </div>
+                <div>
+                    <span class="text-emerald-700 font-bold tracking-wider text-sm uppercase">Kategori A</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Sukari</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 1 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-emerald-900/5 border border-emerald-50 transition-all hover:shadow-2xl hover:border-emerald-100">
+                    <div class="flex justify-between items-start mb-6 pb-4 border-b border-gray-100">
+                        <h3 class="font-bold text-xl text-gray-800">1. Sukari Premium Al Rawdah 1kg</h3>
+                        <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-2 py-1 rounded">Best Seller</span>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <!-- Image Loop -->
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-15-at-16.38.42-7.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-15-at-16.38.42-9.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-15-at-16.38.42-3.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-15-at-16.38.42-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-emerald-900/5 border border-emerald-50 transition-all hover:shadow-2xl hover:border-emerald-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">2. Sukari Badiyah Premium 3kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-4.44.06-AM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-4.44.06-AM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-4.44.06-AM-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-emerald-900/5 border border-emerald-50 transition-all hover:shadow-2xl hover:border-emerald-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">3. Sukari Badiyah Wrapping 3kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-3.06.06-PM-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-3.06.06-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-3.06.06-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-3.06.05-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-emerald-900/5 border border-emerald-50 transition-all hover:shadow-2xl hover:border-emerald-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">4. Sukari Al Qaseem Grade B-C</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-23-at-14.55.09.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-13-at-10.11.27.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-23-at-14.55.09-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-23-at-14.55.08.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION B: KURMA AJWA -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-gray-900 rounded-2xl flex items-center justify-center text-3xl shadow-sm text-white">
+                    🕋
+                </div>
+                <div>
+                    <span class="text-gray-600 font-bold tracking-wider text-sm uppercase">Kategori B</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Ajwa</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 5 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-900/5 border border-gray-100 transition-all hover:shadow-2xl hover:border-gray-200">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">5. Ajwa Al Rawdah 1kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-02-at-14.58.51.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-02-at-14.58.50-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-02-at-14.58.50.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-03-at-15.05.23-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-03-at-15.05.23.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-900/5 border border-gray-100 transition-all hover:shadow-2xl hover:border-gray-200">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">6. Ajwa Majny 5kg (Large)</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.11-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.11-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-e1769702490364.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-gray-900/5 border border-gray-100 transition-all hover:shadow-2xl hover:border-gray-200">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">7. Ajwa Majny 5kg (Medium)</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.23-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.22-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-3.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-1-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-28-at-20.56.12-2-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: KURMA KHALAS -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                    🏜️
+                </div>
+                <div>
+                    <span class="text-red-700 font-bold tracking-wider text-sm uppercase">Kategori C</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Khalas</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 8 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-red-900/5 border border-red-50 transition-all hover:shadow-2xl hover:border-red-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">8. Khalas Al Sameer 10kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-31-at-2.34.33-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-31-at-2.34.34-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-red-900/5 border border-red-50 transition-all hover:shadow-2xl hover:border-red-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">9. Khalas Barari 10kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://uploads.onecompiler.io/44ckngwjx/44cm4d557/Gemini_Generated_Image_ycbeokycbeokycbe%20(1).png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://uploads.onecompiler.io/44ckngwjx/44cm4d557/Gemini_Generated_Image_tx97ektx97ektx97.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-22-at-6.09.25-AM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://uploads.onecompiler.io/44ckngwjx/44cm4d557/Gemini_Generated_Image_3grirf3grirf3gri.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D: KURMA MESIR -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                    🌊
+                </div>
+                <div>
+                    <span class="text-blue-700 font-bold tracking-wider text-sm uppercase">Kategori D</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Mesir</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 10 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-blue-900/5 border border-blue-50 transition-all hover:shadow-2xl hover:border-blue-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">10. Mesir Golden Valley 10kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-24-at-10.32.06.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-24-at-10.32.05.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-24-at-10.59.15.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-24-at-10.32.03.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 11 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-blue-900/5 border border-blue-50 transition-all hover:shadow-2xl hover:border-blue-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">11. Mesir Gizza 10kg Nett</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-13-at-19.28.51.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-13-at-19.28.51-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-13-at-19.28.52.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-13-at-19.28.53.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-13-at-19.28.53-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 12 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-blue-900/5 border border-blue-50 transition-all hover:shadow-2xl hover:border-blue-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">12. Mesir Barari 10kg Gross</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-08.42.07.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-08.42.07-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-09.30.53.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-08-at-08.42.08.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 13 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-blue-900/5 border border-blue-50 transition-all hover:shadow-2xl hover:border-blue-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">13. Mesir Barokah 10kg Gross</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.56-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.57-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.57-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.57-PM-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION E: KURMA TANGKAI & TUNIS -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                    🌿
+                </div>
+                <div>
+                    <span class="text-green-700 font-bold tracking-wider text-sm uppercase">Kategori E</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Tangkai & Tunis</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 14 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">14. Tangkai Al Rawdah 500g</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-05-at-11.43.58-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/WhatsApp-Image-2025-11-24-at-12.42.35-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-04-at-20.36.41.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 15 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">15. Tunis Tangkai SunFruit 400gr</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-07-at-23.27.03.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-07-at-23.26.57-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-07-at-23.27.00-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 16 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">16. Tunis Tangkai Oasis 5kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/IMG_20251108_103655.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/IMG_20251108_102928.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/IMG_20251108_103947.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/11/1762573282369.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 17 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">17. Tangkai 5kg (Dus Hijau-Kuning)</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-19-at-12.54.16.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-19-at-12.54.17.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 18 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">18. Tangkai Fruit Palm 500gr</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.50-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.50-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.49-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.12.49-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 19 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-green-900/5 border border-green-50 transition-all hover:shadow-2xl hover:border-green-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">19. Tunis Madu 5kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-29-at-15.20.01.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-29-at-13.26.00-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-29-at-13.26.00.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION F: KURMA MEDJOL & LAINNYA -->
+        <section class="section-header break-inside-avoid">
+            <div class="flex items-end gap-4 mb-10 border-b border-gray-200 pb-4">
+                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-3xl shadow-sm">
+                    🍇
+                </div>
+                <div>
+                    <span class="text-purple-700 font-bold tracking-wider text-sm uppercase">Kategori F</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mt-1">Kurma Medjol & Lainnya</h2>
+                </div>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- Product 20 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-purple-900/5 border border-purple-50 transition-all hover:shadow-2xl hover:border-purple-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">20. Medjol Premium 1kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-23-at-16.45.18.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-23-at-16.45.18-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-26-at-19.56.19-1-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 21 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-purple-900/5 border border-purple-50 transition-all hover:shadow-2xl hover:border-purple-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">21. Medjol Premium 5kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-26-at-19.56.18-1-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-26-at-19.56.19-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-13-at-15.58.11-3-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-13-at-15.58.11-1-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/02/WhatsApp-Image-2025-02-13-at-15.58.11-scaled.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 22 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-purple-900/5 border border-purple-50 transition-all hover:shadow-2xl hover:border-purple-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">22. Kurma Ruthob Libya 1kg</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-28-at-11.13.52.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-28-at-11.13.52-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-28-at-11.13.52-2.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 23 -->
+                <div class="card-item bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-purple-900/5 border border-purple-50 transition-all hover:shadow-2xl hover:border-purple-100">
+                    <h3 class="font-bold text-xl text-gray-800 mb-6 pb-4 border-b border-gray-100">23. Bam Mazafati 500gr</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.39-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.39-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.40-PM.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="group relative overflow-hidden rounded-2xl bg-gray-100 aspect-square shadow-sm">
+                            <img loading="lazy" src="https://alamirgroup.co.id/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-27-at-11.11.40-PM-1.jpeg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 py-12 text-center no-print">
+        <p class="text-sm font-medium text-gray-500">&copy; 2026 Katalog Galeri Kurma Premium. <br><span class="text-xs font-normal mt-2 block">Foto bersumber dari Al Amir Group.</span></p>
+    </footer>
+
+    <!-- Fixed WhatsApp Button (Sticky Bottom) -->
+    <div class="sticky-cta fixed bottom-6 left-0 right-0 z-50 flex justify-center no-print px-4">
+        <a href="https://wa.me/6281292443776" class="group flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-full shadow-2xl hover:shadow-emerald-600/40 transition-all duration-300 transform hover:-translate-y-1">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-8.683-2.031-9.672-.272-.989-.471-1.135-.644-1.135l-.797.006c-.272.006-.719.102-1.091.509-.374.408-1.436 1.401-1.436 3.416 0 2.015 1.465 3.96 1.67 4.234.204.274 2.88 4.398 6.98 6.126 2.76 1.164 3.322.929 3.917.871.595-.058 1.905-.779 2.173-1.531.268-.753.268-1.398.192-1.527z"/></svg>
+            <span class="text-lg">Beli Kurma Sekarang</span>
+        </a>
+    </div>
+
+</body>
+</html>
